@@ -1,0 +1,32 @@
+{
+  "name": "dynamic-container-path-webpack-plugin",
+  "version": "1.0.0",
+  "description": "Change `publicPath` at run time rather than build time for dynamic module federated containers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"No test specified\\\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waldronmatt/dynamic-container-path-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "module-federation",
+    "publicPath",
+    "dynamic"
+  ],
+  "author": "Matthew Waldron",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/waldronmatt/dynamic-container-path-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/waldronmatt/dynamic-container-path-webpack-plugin#readme",
+  "devDependencies": {
+    "@waldronmatt/prettier-config": "^1.0.3"
+  },
+  "dependencies": {
+    "schema-utils": "^1.0.0"
+  }
+}

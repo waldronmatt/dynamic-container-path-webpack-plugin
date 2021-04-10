@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "iife": {
+      "description": "An immediately invoked function expression to get 'publicPath' at runtime.",
+      "instanceof": "Function"
+    },
+    "entry": {
+      "description": "The entry point name of the application.",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
