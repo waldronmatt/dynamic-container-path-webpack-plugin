@@ -15,7 +15,8 @@
     "plugin",
     "module-federation",
     "publicPath",
-    "dynamic"
+    "dynamic",
+    "containers"
   ],
   "author": "Matthew Waldron",
   "license": "MIT",

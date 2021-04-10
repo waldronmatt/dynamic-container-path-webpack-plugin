@@ -11,7 +11,7 @@
 
 Change `publicPath` at run time rather than build time for dynamic module federated containers.
 
-This should be used in conjunction with [module federation's exposed methods for initializing containers dynamically](https://webpack.js.org/concepts/module-federation/#dynamic-remote-containers) instead of the `remotes` parameter for setting the path statically.
+This should be used in conjunction with module federation's [exposed methods for initializing remote containers dynamically](https://webpack.js.org/concepts/module-federation/#dynamic-remote-containers) instead of using the `remotes` parameter for static paths.
 
 ## Install
 
@@ -33,6 +33,10 @@ const DynamicContainerPathPlugin = require('dynamic-container-path-webpack-plugi
 const setPublicPath = require('./public-path');
 
 module.exports = {
+  entry: {
+    ...
+    host: ["./app.js"],
+  },
   output: {
     ...
     // this will be changed later by 'DynamicContainerPathPlugin' at runtime
@@ -46,7 +50,7 @@ module.exports = {
     }),
     new DynamicContainerPathPlugin({
       iife: setPublicPath,
-      entry: 'entryPointHostName',
+      entry: 'host',
     }),
     // ...
   ],
