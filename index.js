@@ -84,4 +84,4 @@ class DynamicContainerPathPlugin {
   }
 }
 
-module.exports = DynamicPublicPathPlugin;
+module.exports = DynamicContainerPathPlugin;
