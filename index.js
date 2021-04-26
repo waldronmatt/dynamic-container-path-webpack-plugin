@@ -27,7 +27,7 @@ class DynamicContainerPathPlugin {
   getInternalPublicPathVariable(module) {
     /*
       Strip out 'publicPath's' value '/' using webpack's internal global variable set
-      at build time (a.k.a. '__webpack_require__.p')
+      at build time ('__webpack_require__.p')
 
       Note: we cannot simply declare '__webpack_require__.p' because it will not have
       the appropriate context, but we can tap into 'PublicPathRuntimeModule' hooks to get it
@@ -51,23 +51,19 @@ class DynamicContainerPathPlugin {
     return module;
   }
 
-  changePublicPath(module, chunk) {
+  async changePublicPath(module, chunk) {
     console.log(`Changing static publicPath for chunk: ${chunk.name}`);
-    const publicPath = this.getInternalPublicPathVariable(module);
+    const publicPath = await this.getInternalPublicPathVariable(module);
     return this.setNewPublicPathValueFromRuntime(module, publicPath);
   }
 
   apply(compiler) {
     /*
-      Use the compiler to access the main Webpack environment.
-
       Tap into execution before finishing the compilation.
       https://webpack.js.org/api/compiler-hooks/#make
     */
     compiler.hooks.make.tap('MutateRuntime', compilation => {
       /*
-        Use compilations to view and alter the present state of modules.
-
         Compilation hook used by Module Federation author for Remote PublicPath Modification
         https://gist.github.com/ScriptedAlchemy/60d0c49ce049184f6ce3e86ca351fdca#file-mutateruntimeplugin-js-L23
 
@@ -75,7 +71,10 @@ class DynamicContainerPathPlugin {
         https://webpack.js.org/blog/2020-10-10-webpack-5-release/#runtime-modules
       */
       compilation.hooks.runtimeModule.tap('MutateRuntime', (module, chunk) => {
-        // https://github.com/webpack/webpack/blob/master/lib/runtime/PublicPathRuntimeModule.js
+        /*
+        The hook to get the public path ('__webpack_require__.p')
+        https://github.com/webpack/webpack/blob/master/lib/runtime/PublicPathRuntimeModule.js
+      */
         module.constructor.name === 'PublicPathRuntimeModule'
           ? this.changePublicPath(module, chunk)
           : false;
