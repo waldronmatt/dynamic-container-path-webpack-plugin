@@ -1,6 +1,6 @@
 {
   "name": "dynamic-container-path-webpack-plugin",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Change `publicPath` at run time rather than build time for dynamic module federated containers.",
   "main": "index.js",
   "scripts": {
