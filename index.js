@@ -51,9 +51,9 @@ class DynamicContainerPathPlugin {
     return module;
   }
 
-  async changePublicPath(module, chunk) {
+  changePublicPath(module, chunk) {
     console.log(`Changing static publicPath for chunk: ${chunk.name}`);
-    const publicPath = await this.getInternalPublicPathVariable(module);
+    const publicPath = this.getInternalPublicPathVariable(module);
     return this.setNewPublicPathValueFromRuntime(module, publicPath);
   }
 
