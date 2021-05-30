@@ -16,26 +16,22 @@ This should be used in conjunction with module federation's [exposed methods for
 ## Install
 
 ```bash
-npm install dynamic-container-path-webpack-plugin
+npm install --save-dev dynamic-container-path-webpack-plugin
 ```
 
 ## Usage
-
-**Click here for a full example (Work-in-progress).**
-
-Module Federated Host example:
 
 `webpack.config.js`
 
 ```js
 const { ModuleFederationPlugin } = require("webpack").container;
 const DynamicContainerPathPlugin = require('dynamic-container-path-webpack-plugin');
-const setPublicPath = require('./public-path');
+const setPublicPath = require('dynamic-container-path-webpack-plugin/set-path');
 
 module.exports = {
   entry: {
     ...
-    host: ["./app.js"],
+    Host: ["./app.js"],
   },
   output: {
     ...
@@ -50,21 +46,12 @@ module.exports = {
     }),
     new DynamicContainerPathPlugin({
       iife: setPublicPath,
-      entry: 'host',
+      entry: 'Host',
     }),
     // ...
   ],
   // ...
 };
-```
-
-`public-path.js`
-
-```js
-module.exports = (function(entry) {
-  ...
-  return publicPath;
-});
 ```
 
 ## Options
