@@ -34,7 +34,7 @@ class DynamicContainerPathPlugin {
 
       'getGeneratedCode()'
       https://github.com/webpack/webpack/blob/afc9b2fcf9bef0831640b3ebb02b73068ba18e17/types.d.ts#L8989
-      https://github.com/webpack/webpack/blob/af52c8f0457b1055098d6b7b545b257404d06c93/lib/RuntimeModule.js#L171
+      https://github.com/webpack/webpack/blob/af52c8f0457b1055098d6b7b545b257404d06c93/lib/RuntimeModule.js#L171-L178
     */
     const [publicPath] = module.getGeneratedCode().split('=');
     return [publicPath];
