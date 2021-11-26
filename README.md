@@ -13,10 +13,6 @@ Change `publicPath` at run time rather than build time for dynamic module federa
 
 This should be used in conjunction with module federation's [exposed methods for initializing remote containers dynamically](https://webpack.js.org/concepts/module-federation/#dynamic-remote-containers) instead of using the `remotes` parameter for static paths.
 
-## Usage Guide for Dynamic Module Federation Repositories
-
-See the [readme file](https://github.com/waldronmatt/dynamic-host-module-federation#guide---an-approach-to-module-federation-for-enterprise) for more information on how this plugin can be effectively utilized.
-
 ## Install
 
 ```bash
@@ -71,6 +67,10 @@ An immediately invoked function expression to get `publicPath` at runtime.
 - Type: `string`
 
 The entry point name of the application.
+
+## Getting Started
+
+See [Tutorial - A Guide to Module Federation for Enterprise](https://dev.to/waldronmatt/tutorial-a-guide-to-module-federation-for-enterprise-n5) for more information and to learn how this webpack plugin works.
 
 ## Contributing
 
