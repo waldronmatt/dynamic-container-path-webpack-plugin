@@ -16,7 +16,7 @@ This should be used in conjunction with module federation's [exposed methods for
 ## Install
 
 ```bash
-npm install --save-dev dynamic-container-path-webpack-plugin
+npm i -D dynamic-container-path-webpack-plugin
 ```
 
 ## Usage
@@ -30,27 +30,21 @@ const setPublicPath = require('dynamic-container-path-webpack-plugin/set-path');
 
 module.exports = {
   entry: {
-    ...
     Host: ["./app.js"],
   },
   output: {
-    ...
     // this will be changed later by 'DynamicContainerPathPlugin' at runtime
     publicPath: "/",
   },
-  // ...
   plugins: [
-    // ...
     new ModuleFederationPlugin({
-      ...
+      // ...
     }),
     new DynamicContainerPathPlugin({
       iife: setPublicPath,
       entry: 'Host',
     }),
-    // ...
   ],
-  // ...
 };
 ```
 
@@ -71,10 +65,6 @@ The entry point name of the application.
 ## Getting Started
 
 See [Tutorial - A Guide to Module Federation for Enterprise](https://dev.to/waldronmatt/tutorial-a-guide-to-module-federation-for-enterprise-n5) for more information and to learn how this webpack plugin works.
-
-## Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
