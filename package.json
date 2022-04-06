@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/waldronmatt/dynamic-container-path-webpack-plugin#readme",
   "devDependencies": {
-    "@waldronmatt/prettier-config": "^1.0.3"
+    "@waldronmatt/prettier-config": "^1.2.0",
+    "prettier": "^2.6.2"
   },
   "dependencies": {
     "schema-utils": "^1.0.0"

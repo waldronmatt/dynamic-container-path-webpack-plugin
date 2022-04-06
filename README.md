@@ -24,17 +24,17 @@ npm i -D dynamic-container-path-webpack-plugin
 `webpack.config.js`
 
 ```js
-const { ModuleFederationPlugin } = require("webpack").container;
+const { ModuleFederationPlugin } = require('webpack').container;
 const DynamicContainerPathPlugin = require('dynamic-container-path-webpack-plugin');
 const setPublicPath = require('dynamic-container-path-webpack-plugin/set-path');
 
 module.exports = {
   entry: {
-    Host: ["./app.js"],
+    Host: ['./app.js'],
   },
   output: {
     // this will be changed later by 'DynamicContainerPathPlugin' at runtime
-    publicPath: "/",
+    publicPath: '/',
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -61,6 +61,23 @@ An immediately invoked function expression to get `publicPath` at runtime.
 - Type: `string`
 
 The entry point name of the application.
+
+**Note**: You have access to the **entry** and **chunk** via your **iife**:
+
+```js
+function determinePublicPath(entry, chunk) {
+  if (chunk !== "Host") {
+    return `/something/${entry}/`;
+  }
+
+  return "/";
+}
+
+new DynamicContainerPathPlugin({
+  iife: determinePublicPath,
+  entry: 'Host',
+}),
+```
 
 ## Getting Started
 
