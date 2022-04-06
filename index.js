@@ -40,21 +40,21 @@ class DynamicContainerPathPlugin {
     return [publicPath];
   }
 
-  setNewPublicPathValueFromRuntime(module, publicPath) {
+  setNewPublicPathValueFromRuntime(module, publicPath, chunk) {
     /*
       By default, 'module._cachedGeneratedCode' is equal to '__webpack_require__.p = "/";' at build time
 
       Now, we set 'publicPath's' internal variable '__webpack_require__.p' from 'getInternalPublicPathVariable'
       equal to an anonymous function that will dynamically set the 'host' 'publicPath' at runtime
     */
-    module._cachedGeneratedCode = `${publicPath}=${this.options.iife}('${this.options.entry}');`;
+    module._cachedGeneratedCode = `${publicPath}=${this.options.iife}('${this.options.entry}', '${chunk.name}');`;
     return module;
   }
 
   changePublicPath(module, chunk) {
     console.log(`Changing static publicPath for chunk: ${chunk.name}`);
     const publicPath = this.getInternalPublicPathVariable(module);
-    return this.setNewPublicPathValueFromRuntime(module, publicPath);
+    return this.setNewPublicPathValueFromRuntime(module, publicPath, chunk);
   }
 
   apply(compiler) {
